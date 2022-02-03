@@ -1,0 +1,68 @@
+<section>
+    <mat-card class="blur mat-elevation-z10">
+        <mat-card-header>
+            <mat-card-title>Add a Device</mat-card-title>
+            <mat-card-subtitle>Select a discovered device</mat-card-subtitle>
+        </mat-card-header>
+
+        <mat-card-content>
+            <form fxLayout="column" fxLayoutGap="20px" [formGroup]="form" (ngSubmit)="save()">
+                <alerts [messages]="alerts.messages" [loading]="loading.partial || loading.full"></alerts>
+
+                <mat-vertical-stepper #stepper *ngIf="!alerts.messages.info" [linear]="true">
+                    <!-- Devices -->
+                    <mat-step label="Discovered Devices" [stepControl]="form.get('name')">
+                        <mat-nav-list>
+                            <mat-list-item *ngFor="let device of discoveredDevices"
+                                (click)="form.patchValue(device); stepper.next()">
+                                <mat-icon matListIcon>{{ device.type?.icon }}</mat-icon>
+                                <h4 matLine>{{ device.name }}</h4>
+                                <p matLine>{{ device.description }}</p>
+                                <!-- <mat-icon>chevron_right</mat-icon> -->
+                            </mat-list-item>
+                        </mat-nav-list>
+                    </mat-step>
+                    
+                    <!-- Details -->
+                    <mat-step label="Device Details" [stepControl]="form">
+                        <div fxLayout="column" class="padding-top-30">
+                            <!-- Name -->
+                            <mat-form-field>
+                                <input matInput placeholder="Name" formControlName="name" type="text" />
+                            </mat-form-field>
+                            
+                            <!-- Type -->
+                            <mat-form-field>
+                                <mat-select placeholder="Type" formControlName="type" [compareWith]="compareFn">
+                                    <mat-select-trigger>
+                                        <mat-icon>{{ form.value.type?.icon }}</mat-icon>
+                                        {{ form.value.type?.label }}
+                                    </mat-select-trigger>
+
+                                    <mat-option *ngFor="let type of formOptions.deviceTypes" [value]="type">
+                                        <mat-icon>{{ type.icon }}</mat-icon>
+                                        {{ type.label }}
+                                    </mat-option>
+                                </mat-select>
+                            </mat-form-field>
+
+                            <!-- Description -->
+                            <mat-form-field>
+                                <textarea matInput placeholder="Description" formControlName="description"></textarea>
+                            </mat-form-field>
+
+                            <!-- URL -->
+                            <mat-form-field>
+                                <input matInput placeholder="Url" formControlName="url" type="text" />
+                            </mat-form-field>
+                            
+                            <div class="padding-top-30">
+                                <button mat-flat-button color="primary" type="submit" fxFlex>Add Device</button>
+                            </div>
+                        </div>
+                    </mat-step>
+                </mat-vertical-stepper>
+            </form>
+        </mat-card-content>
+    </mat-card>
+</section>

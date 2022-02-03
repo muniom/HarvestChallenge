@@ -1,0 +1,5 @@
+<div [style.backgroundColor]="backgroundColor">
+    <img *ngIf="user" [class.isHidden]="hidePic" [src]="user.pictureUrl||''" (error)="generate()" />
+    <div *ngIf="userInitials" [innerHTML]="userInitials"></div>
+</div>
+<ng-content></ng-content>

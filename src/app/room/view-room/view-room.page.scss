@@ -1,0 +1,23 @@
+:host::ng-deep {
+    .player {
+        position: relative;
+        display: flex;
+        flex-wrap: wrap;
+        background-color: var(--dark);
+
+        & > div{
+            position: relative;
+            flex: 1 1 50%;
+            // width: 33%;
+            // height: 33%;
+
+            iframe {
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+            }
+        }
+    }
+}

@@ -1,0 +1,8 @@
+{
+    "workbench.colorCustomizations": {
+        "titleBar.inactiveBackground": "#1c332e",
+        "titleBar.activeBackground": "#1c332e",
+        "activityBar.background": "#1c332e"
+    },
+    "editor.hover.delay": 1000
+}

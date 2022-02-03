@@ -1,0 +1,59 @@
+
+<div class="full-height" fxLayout="row">
+    <nav fxFlex="30" fxLayout="column" class="mat-elevation-z10">
+        <alerts [messages]="alerts.messages" [loading]="loading.partial || loading.full"></alerts>
+        
+        <mat-nav-list fxFlex fxLayout="column">
+            <a mat-list-item routerLink="/">
+                <mat-icon matListIcon>home</mat-icon>
+                <h4 matLine>Home</h4>
+            </a>
+            <a mat-list-item routerLink="/device/add">
+                <mat-icon matListIcon>control_point</mat-icon>
+                <h4 matLine>Add Device</h4>
+            </a>
+
+            <mat-divider></mat-divider>
+
+            <!-- Rooms -->
+            <ng-container *ngIf="rooms?.length">
+                <h3 matSubheader>Rooms</h3>
+                <a mat-list-item *ngFor="let room of rooms"
+                    [routerLink]="['/room', room.roomId]">
+                    <mat-icon matListIcon>{{ room.icon }}</mat-icon>
+                    <h4 matLine>{{ room.name }}</h4>
+                    <p matLine>{{ room.description }}</p>
+                </a>
+
+                <mat-divider></mat-divider>
+            </ng-container>
+
+            <!-- Devices -->
+            <ng-container *ngIf="devices?.length">
+                <h3 matSubheader>Devices</h3>
+                <a mat-list-item *ngFor="let device of devices"
+                    [routerLink]="['/device', device.deviceId]">
+                    <mat-icon matListIcon>{{ device.type?.icon }}</mat-icon>
+                    <h4 matLine>{{ device.name }}</h4>
+                    <p matLine>{{ device.description }}</p>
+                </a>
+
+                <mat-divider></mat-divider>
+            </ng-container>
+
+            <div fxFlex></div>
+
+            <a mat-list-item (click)="authService.signOut()">
+                <mat-icon matListIcon>logout</mat-icon>
+                <h4 matLine>Sign Out</h4>
+            </a>
+        </mat-nav-list>
+    </nav>
+
+    <main fxFlex>
+        <!-- [@routeAnimation]="o.isActivated ? o.activatedRoute : ''"> -->
+        <router-outlet #o="outlet"
+            (activate)="onActivate($event)">
+        </router-outlet>
+    </main>
+</div>

@@ -1,0 +1,51 @@
+<section fxLayout="column" fxLayoutGap="20px">
+    <alerts [messages]="alerts.messages"></alerts>
+
+    <mat-card class="blur mat-elevation-z10">
+        <mat-card-header>
+            <mat-card-title>Welcome {{ authService.user.name }}</mat-card-title>
+            <mat-card-subtitle>{{ authService.user.organisation.name }}</mat-card-subtitle>
+        </mat-card-header>
+
+        <mat-card-content>
+            <alerts [messages]="alerts.messages" [loading]="loading.partial || loading.full"></alerts>
+
+            <!-- <p>Welcome to the Harvest Challenge app, check out the notable features:</p> -->
+
+            <mat-list>
+                <mat-list-item>
+                    <mat-icon mat-list-icon color="success">done</mat-icon>
+                    <div mat-line>Add a Device</div>
+                </mat-list-item>
+                <mat-list-item>
+                    <mat-icon mat-list-icon color="warning">warning_amber</mat-icon>
+                    <div mat-line>Assign a Device to a Room</div>
+                </mat-list-item>
+                <mat-list-item>
+                    <mat-icon mat-list-icon color="error">error_outline</mat-icon>
+                    <div mat-line>Invite Users to a Room</div>
+                </mat-list-item>
+                <mat-list-item>
+                    <mat-icon mat-list-icon color="success">done</mat-icon>
+                    <div mat-line>Local-Stored App State</div>
+                </mat-list-item>
+            </mat-list>
+        </mat-card-content>
+    </mat-card>
+
+    <mat-card class="blur mat-elevation-z10">
+        <mat-card-header>
+            <mat-card-title>Todays Schedule...</mat-card-title>
+        </mat-card-header>
+
+        <mat-card-content>
+            <mat-list>
+                <mat-list-item>
+                    <mat-icon mat-list-icon>event</mat-icon>
+                    <div mat-line>9:30am Kickoff Meeting</div>
+                    <div mat-line>All Devices</div>
+                </mat-list-item>
+            </mat-list>
+        </mat-card-content>
+    </mat-card>
+</section>

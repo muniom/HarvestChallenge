@@ -1,0 +1,53 @@
+<form [formGroup]="signIn.form" (ngSubmit)="signIn.submit()">
+    <mat-card class="blur mat-elevation-z10">
+        <mat-card-header>
+            <mat-card-title>Welcome to Harvest</mat-card-title>
+            <mat-card-subtitle>Log In</mat-card-subtitle>
+        </mat-card-header>
+
+        <mat-card-content>
+            <alerts [messages]="signIn.alerts.messages" [loading]="signIn.loading.partial || loading.full"></alerts>
+
+            <div fxLayout="column">
+                <mat-form-field>
+                    <input matInput placeholder="Email" formControlName="email" type="email" />
+                </mat-form-field>
+                <mat-form-field>
+                    <input matInput placeholder="Password" formControlName="password" type="password" />
+                </mat-form-field>
+                <div class="remember-me" fxLayoutAlign="left">
+                    <mat-slide-toggle formControlName="rememberMe">Keep me signed in</mat-slide-toggle>
+                </div>
+            </div>
+
+            <p class="text-center"><span class="text-grey">Not for Commercial Use</span></p>
+        </mat-card-content>
+
+        <mat-card-actions>
+            <button mat-flat-button color="primary" type="submit" fxFlex>Login</button>
+        </mat-card-actions>
+    </mat-card>
+</form>
+
+
+
+
+<!-- <form id="signUpForm" #signUpForm="ngForm"
+    [ngFormOptions]="{ updateOn: 'blur' }"
+    (ngSubmit)="signUp.submit()">
+    <alerts [messages]="signUp.alerts.messages" (change)="signInTabs.updateAutoHeight()"></alerts>
+    <div padding>
+        <div validation="name">
+            <div position="floating">Nickname</div>
+            <ion-input name="name" ngModel required></ion-input>
+        </div>
+        <div validation="email">
+            <div position="floating">Email</div>
+            <ion-input name="email" type="email" ngModel required email></ion-input>
+        </div>
+        <div validation="pass">
+            <div position="floating">Password</div>
+            <ion-input name="pass" type="password" ngModel required minlength="6"></ion-input>
+        </div>
+    </div>
+</form> -->

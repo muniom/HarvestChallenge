@@ -1,0 +1,34 @@
+<section fxFlex fxLayout="column" class="padding-0">
+    <mat-card class="dark square">
+        <mat-card-header>
+            <div mat-card-avatar><mat-icon>rooms</mat-icon></div>
+            <mat-card-title>All Devices</mat-card-title>
+            <!-- <mat-card-subtitle>{{ form.value.description }}</mat-card-subtitle> -->
+            <button mat-icon-button matTooltip="Add User" (click)="addUser()"><mat-icon>person_add</mat-icon></button>
+            <button mat-icon-button matTooltip="Assign Device" (click)="assignDevice()"><mat-icon>developer_mode</mat-icon></button>
+        </mat-card-header>
+
+        <mat-card-content>
+            <alerts [messages]="alerts.messages" [loading]="loading.partial || loading.full"></alerts>
+        </mat-card-content>
+    </mat-card>
+
+    <!-- Players fxLayoutAlign="space-around" -->
+    <div fxFlex class="player">
+        <div *ngIf="!devices?.length && !loading.partial" fxLayout="column" fxLayoutAlign="space-around" class="padding-30">
+            <alerts [messages]="{ info: 'No Devices in Room' }"></alerts>
+            <div fxFlex></div>
+            <button mat-flat-button color="primary" [routerLink]="['/device/add']">Assign a Device</button>
+            <div fxFlex></div>
+        </div>
+        
+        <ng-container *ngFor="let device of devices">
+            <div *ngIf="device.url">
+                <iframe id="ytplayer"
+                    [src]="device.url | safe:'resourceUrl'"
+                    frameborder="0" allowfullscreen>
+                </iframe>
+            </div>
+        </ng-container>
+    </div>
+</section>

@@ -1,0 +1,305 @@
+html, body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    background-image: url('../assets/SatelightBackgroud_white.gif');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+}
+
+// Variables
+:root {
+    --primary: #eb4c36;
+    --primary-rgb: 235, 76, 54;
+
+    --secondary: #fcb900;
+    --secondary-rgb: 252, 185, 0;
+
+    --light: #f4f5f8;
+    --light-rgb: 244, 244, 244;
+
+    --dark: #222428;
+    --dark-rgb: 34, 34, 34;
+        
+    --info: #0a8bc7;
+    --info-rgb: 10, 139, 199;
+        
+    --success: #0ac754;
+    --success-rgb: 16, 220, 96;
+    
+    --warning: #ff6300;
+    --warning-rgb: 255, 99, 0;
+
+    --danger: #f04141;
+    --danger-rgb: 245, 61, 61;
+
+    .dark {
+        --light: #222428;
+        --light-rgb: 34, 34, 34;
+
+        --dark: #f4f5f8;
+        --dark-rgb: 244, 244, 244;
+    }
+}
+
+// Material
+:root {
+    @import '~@angular/material/theming';
+    @include mat-core();
+
+    // https://github.com/angular/flex-layout/wiki/Declarative-API-Overview
+    // http://mcg.mbitson.com/#!?primary=%23eb4c36&secondary=%23fcb900&themename=harvest
+    $mat-primary: (
+        50 : #fdeae7,
+        100 : #f9c9c3,
+        200 : #f5a69b,
+        300 : #f18272,
+        400 : #ee6754,
+        500 : #eb4c36,
+        600 : #e94530,
+        700 : #e53c29,
+        800 : #e23322,
+        900 : #dd2416,
+        A100 : #ffffff,
+        A200 : #ffdcda,
+        A400 : #ffaca7,
+        A700 : #ff948e,
+        contrast: (
+            50 : #000000,
+            100 : #000000,
+            200 : #000000,
+            300 : #000000,
+            400 : #000000,
+            500 : #ffffff,
+            600 : #ffffff,
+            700 : #ffffff,
+            800 : #ffffff,
+            900 : #ffffff,
+            A100 : #000000,
+            A200 : #000000,
+            A400 : #000000,
+            A700 : #000000,
+        )
+    );
+    
+    $mat-secondary: (
+        50 : #fff7e0,
+        100 : #feeab3,
+        200 : #fedc80,
+        300 : #fdce4d,
+        400 : #fcc426,
+        500 : #fcb900,
+        600 : #fcb200,
+        700 : #fbaa00,
+        800 : #fba200,
+        900 : #fa9300,
+        A100 : #ffffff,
+        A200 : #fff7ed,
+        A400 : #ffdfba,
+        A700 : #ffd3a1,
+        contrast: (
+            50 : #000000,
+            100 : #000000,
+            200 : #000000,
+            300 : #000000,
+            400 : #000000,
+            500 : #000000,
+            600 : #000000,
+            700 : #000000,
+            800 : #000000,
+            900 : #000000,
+            A100 : #000000,
+            A200 : #000000,
+            A400 : #000000,
+            A700 : #000000,
+        )
+    );  
+
+    $app-primary: mat-palette($mat-primary, 500);
+    $app-accent: mat-palette($mat-secondary, 500);
+    $app-theme: mat-light-theme($app-primary, $app-accent);
+    @include angular-material-theme($app-theme);
+
+    // Button
+    .mat-flat-button {
+        &.mat-primary {
+            background-image: linear-gradient(139deg, var(--primary), var(--primary), var(--secondary));
+        }
+        &.mat-danger {
+            color: var(--light);
+            background-color: var(--danger);
+        }
+        &.mat-delete {
+            color: var(--danger);
+        }
+    }
+
+    // Icon
+    .mat-icon {
+        &.mat-success {
+            color: var(--success);
+        }
+        &.mat-warning {
+            color: var(--warning);
+        }
+    }
+
+    // Card
+    .mat-card {
+        color: var(--dark);
+        background-color: var(--light);
+
+        &.blur {
+            background-color: rgba(var(--light-rgb), .5);
+            backdrop-filter: blur(10px);
+        }
+
+        &.transparent {
+            background-color: transparent;
+        }
+
+        &.square {
+            border-radius: 0;
+        }
+
+        & > .mat-card-header {
+            .mat-card-header-text {
+                flex: 1;
+
+                .mat-card-subtitle {
+                    color: rgba(var(--dark-rgb), .6);
+                }
+            }
+
+            .mat-card-avatar,
+            .mat-icon-button {
+                height: 20px;
+                width: 20px;
+                line-height: 20px;
+                margin: 0 20px;
+            }
+        }
+    }
+
+    // Stepper
+    .mat-stepper-vertical {
+        background-color: transparent;
+    }
+}
+
+// Font-Awesome
+:root {
+    $fa-font-path: '~font-awesome/fonts';
+    @import '~font-awesome/scss/font-awesome.scss';
+}
+
+// Generic
+:root {
+    section {
+        padding: 5%;
+    }
+
+    .full-height { height: 100%; }
+    .full-width { width: 100%; max-width: 100%; }
+
+    .overflow-visible { overflow: visible; }
+    .overflow-auto { overflow: auto; }
+
+    .margin-0 { margin: 0 !important; }
+    .margin-5 { margin: 5px !important; }
+    .margin-10 { margin: 10px !important; }
+    .margin-15 { margin: 15px !important; }
+    .margin-30 { margin: 30px !important; }
+    .margin-top-0 { margin-top: 0 !important; }
+    .margin-top-5 { margin-top: 5px !important; }
+    .margin-top-10 { margin-top: 10px !important; }
+    .margin-top-15 { margin-top: 15px !important; }
+    .margin-top-30 { margin-top: 30px !important; }
+    .margin-bottom-0 { margin-bottom: 0 !important; }
+    .margin-bottom-5 { margin-bottom: 5px !important; }
+    .margin-bottom-10 { margin-bottom: 10px !important; }
+    .margin-bottom-15 { margin-bottom: 15px !important; }
+    .margin-bottom-30 { margin-bottom: 30px !important; }
+    .margin-bottom-100 { margin-bottom: 100px !important; }
+    .margin-left-0 { margin-left: 0 !important; }
+    .margin-left-5 { margin-left: 5px !important; }
+    .margin-left-10 { margin-left: 10px !important; }
+    .margin-left-15 { margin-left: 15px !important; }
+    .margin-right-0 { margin-right: 0 !important; }
+    .margin-right-5 { margin-right: 5px !important; }
+    .margin-right-10 { margin-right: 10px !important; }
+    .margin-right-15 { margin-right: 15px !important; }
+    
+    .padding-0 { padding: 0 !important; }
+    .padding-5 { padding: 5px !important; }
+    .padding-15 { padding: 15px !important; }
+    .padding-30 { padding: 30px !important; }
+    .padding-top-0 { padding-top: 0 !important; }
+    .padding-top-5 { padding-top: 5px !important; }
+    .padding-top-10 { padding-top: 10px !important; }
+    .padding-top-15 { padding-top: 15px !important; }
+    .padding-top-30 { padding-top: 30px !important; }
+    .padding-bottom-0 { padding-bottom: 0 !important; }
+    .padding-bottom-5 { padding-bottom: 5px !important; }
+    .padding-bottom-10 { padding-bottom: 10px !important; }
+    .padding-bottom-15 { padding-bottom: 15px !important; }
+    .padding-bottom-30 { padding-bottom: 30px !important; }
+    .padding-left-0 { padding-left: 0 !important; }
+    .padding-left-5 { padding-left: 5px !important; }
+    .padding-left-10 { padding-left: 10px !important; }
+    .padding-left-15 { padding-left: 15px !important; }
+    .padding-left-30 { padding-left: 30px !important; }
+    .padding-right-0 { padding-right: 0 !important; }
+    .padding-right-5 { padding-right: 5px !important; }
+    .padding-right-10 { padding-right: 10px !important; }
+    .padding-right-15 { padding-right: 15px !important; }
+    .padding-right-30 { padding-right: 30px !important; }
+
+    .text-left { text-align: left; }
+    .text-center { text-align: center; }
+    .text-right { text-align: right; }
+    .text-pre-wrap { white-space: pre; }
+
+    .text-white { color: #FFF; }
+    .text-grey { color: #999; }
+
+    .text-small { font-size: .7em; }
+
+    .no-results {
+        padding: 50px 0;
+        font-size: .7em;
+        color: #666;
+        text-align: center;
+    }
+}
+
+// AutoFill
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+input:-webkit-autofill:active {
+   -webkit-transition-delay: 9999s;
+   transition-delay: 9999s;
+}
+
+// button {
+//     display: block;
+//     width: calc(100% - 4px);
+//     border-radius: 4px;
+//     margin-left: 2px;
+//     margin-right: 2px;
+//     margin-top: 4px;
+//     margin-bottom: 4px;
+//     padding: 0;
+//     height: 36px;
+//     font-size: 14px;
+//     font-weight: 500;
+//     letter-spacing: 0.06em;
+//     color: #FFF;
+//     background: var(--danger-shade);
+//     overflow: hidden;
+// }

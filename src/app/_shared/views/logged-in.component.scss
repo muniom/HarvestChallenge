@@ -1,0 +1,20 @@
+:host::ng-deep {
+    div {
+        & > nav {
+            background-color: rgba(var(--light-rgb), .5);
+            backdrop-filter: blur(10px);
+            overflow: auto;
+        }
+
+        & > main {
+            position: relative;
+            overflow: auto;
+
+            router-outlet + * {
+                display: flex;
+                flex-direction: column;
+                min-height: 100%;
+            }
+        }
+    }
+}

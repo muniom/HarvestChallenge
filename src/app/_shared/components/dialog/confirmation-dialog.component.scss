@@ -1,0 +1,14 @@
+:root {
+    .mat-dialog-container {
+        // padding: 0;
+
+        .mat-dialog-content {
+            position: relative;
+            padding: 5vw;
+        }
+
+        .mat-dialog-actions {
+            margin: 0 -16px -24px;
+        }
+    }
+}

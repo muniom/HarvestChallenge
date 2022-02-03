@@ -1,0 +1,25 @@
+<div *ngIf="loading" class="loading">
+    <div><mat-spinner></mat-spinner></div>
+</div>
+
+<div *ngIf="messages?.success" class="alert mat-typography" color="success" [@expandInOut]>
+    <i class="fa fa-information-circle"></i>
+    <div>{{ messages.success }}</div>
+</div>
+
+<div *ngIf="messages?.info" class="alert mat-typography" color="info" [@expandInOut]>
+    <i class="fa fa-information-circle"></i>
+    <div>{{ messages.info }}</div>
+</div>
+
+<div *ngIf="messages?.warning" class="alert mat-typography" color="warning" [@expandInOut]>
+    <i class="fa fa-exclamation-triangle"></i>
+    <div>{{ messages.warning }}</div>
+</div>
+
+<div *ngIf="messages?.error" class="alert mat-typography" color="danger" [@expandInOut]>
+    <i class="fa fa-exclamation-triangle"></i>
+    <div>{{ messages.error?.message || messages.error?.error || messages.error }}</div>
+</div>
+
+<!-- {{ messages?.error?.message | json }} -->

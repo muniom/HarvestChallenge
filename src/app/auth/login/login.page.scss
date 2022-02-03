@@ -1,0 +1,38 @@
+:host::ng-deep {
+    display: block;
+    height: 100vh;
+    width: 100vw;
+
+    mat-card {
+        position: absolute;
+        top: 40vh;
+        left: 50%;
+        width: 90%;
+        max-width: 500px;
+        transform: translate(-50%, -50%);
+
+        // .logo {
+        //     position: absolute;
+        //     top: 30vh;
+        //     left: 50%;
+        //     width: 70%;
+        //     transform: translate(-50%, -50%);
+        //     transition: top .3s ease-out, width .3s ease-out;
+
+        //     &.small {
+        //         top: 10vh;
+        //         width: 50%;
+        //     }
+        // }
+
+        mat-card-content {
+            & > div {
+                padding: 20px 40px;
+
+                .remember-me {
+                    padding: 15px 0 0;
+                }
+            }
+        }
+    }
+}

@@ -1,0 +1,21 @@
+<div mat-dialog-title>
+    {{ data.title }}
+</div>
+<div mat-dialog-content class="mat-typography">
+    <alerts [messages]="alerts.messages" [loading]="loading.partial"></alerts>
+
+    {{ data.msg }}
+</div>
+<mat-dialog-actions fxLayout="row">
+    <button mat-button fxFlex
+        [disabled]="loading.partial"
+        (click)="respond(false)">
+        {{ data.no?.label || 'Cancel' }}
+    </button>
+    <button mat-flat-button fxFlex
+        [disabled]="loading.partial"
+        [color]="'danger'"
+        (click)="respond(true)">
+        {{ data.yes?.label || 'Confirm' }}
+    </button>
+</mat-dialog-actions>

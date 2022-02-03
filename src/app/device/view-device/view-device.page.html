@@ -1,0 +1,28 @@
+<section fxFlex fxLayout="column" class="padding-0">
+    <mat-card class="dark square">
+        <mat-card-header>
+            <div mat-card-avatar><mat-icon>{{ form.value.type?.icon }}</mat-icon></div>
+            <mat-card-title>{{ form.value.name }}</mat-card-title>
+            <mat-card-subtitle>{{ form.value.description }}</mat-card-subtitle>
+            <button mat-icon-button [routerLink]="['edit']" matTooltip="Edit"><mat-icon>edit</mat-icon></button>
+        </mat-card-header>
+
+        <mat-card-content>
+            <alerts [messages]="alerts.messages" [loading]="loading.partial || loading.full"></alerts>
+        </mat-card-content>
+    </mat-card>
+
+    <!-- Player -->
+    <div fxFlex fxLayout="column" fxLayoutAlign="space-around" class="player">
+        <div *ngIf="!form.value.url && !loading.partial" class="padding-30">
+            <alerts [messages]="{ warning: 'There is an issue with the stream' }"></alerts>
+        </div>
+        
+        <div *ngIf="form.value.url">
+            <iframe id="ytplayer"
+                [src]="form.value.url | safe:'resourceUrl'"
+                frameborder="0" allowfullscreen>
+            </iframe>
+        </div>
+    </div>
+</section>
